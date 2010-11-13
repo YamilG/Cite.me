@@ -1,5 +1,10 @@
 CiteMe::Application.routes.draw do
-  devise_for :users
+  root :to => "static#home"
+  devise_for :users do
+    match "/signup" => "devise/registrations#new"
+    match "/signout" => "devise/sessions#destroy"
+    match "/signin" => "devise/sessions#create"
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

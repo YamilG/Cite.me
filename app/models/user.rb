@@ -5,6 +5,6 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  field :name
+  field :user_name
   
 end

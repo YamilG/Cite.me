@@ -1,0 +1,21 @@
+!!!
+%html
+    %head
+        %title
+            =page_title
+        =stylesheet_link_tag :all
+        =javascript_include_tag :defaults
+        =csrf_meta_tag
+    %body
+        %h2
+        -if user_signed_in?
+            %p
+                =current_user.user_name
+                %a{:href => signout_path} Sign Out
+        -else
+            %p
+                %a{:href => signin_path} Sign In
+
+        =yield
+        =flash[:notice]
+        =flash[:error]
