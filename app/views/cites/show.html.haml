@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @cite.title
+%p
+  %b Author:
+  = @cite.author
+%p
+  %b Year:
+  = @cite.year
+%p
+  %b Publisher:
+  = @cite.publisher
+%p
+  %b Page:
+  = @cite.page
+
+= link_to 'Edit', edit_cite_path(@cite)
+\|
+= link_to 'Back', cites_path

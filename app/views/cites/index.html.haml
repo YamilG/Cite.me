@@ -1,0 +1,27 @@
+%h1 Listing cites
+
+%table
+  %tr
+    %th Title
+    %th Author
+    %th Year
+    %th Publisher
+    %th Page
+    %th
+    %th
+    %th
+
+  - @cites.each do |cite|
+    %tr
+      %td= cite.title
+      %td= cite.author
+      %td= cite.year
+      %td= cite.publisher
+      %td= cite.page
+      %td= link_to 'Show', cite
+      %td= link_to 'Edit', edit_cite_path(cite)
+      %td= link_to 'Destroy', cite, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Cite', new_cite_path

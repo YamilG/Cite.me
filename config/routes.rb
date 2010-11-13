@@ -1,4 +1,6 @@
 CiteMe::Application.routes.draw do
+  resources :cites
+
   root :to => "static#home"
   devise_for :users do
     match "/signup" => "devise/registrations#new"
