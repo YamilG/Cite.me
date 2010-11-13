@@ -15,6 +15,8 @@
         -else
             %p
                 %a{:href => signin_path} Sign In
+                or
+                %a{:href => signup_path} Sign Up
 
         =yield
         =flash[:notice]
