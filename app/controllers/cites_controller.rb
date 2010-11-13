@@ -1,8 +1,19 @@
 class CitesController < ApplicationController
   # GET /cites
   # GET /cites.xml
+  before_filter :authenticate_user!
+  before_filter :user_match_cite, :only => [:show, :edit, :update, :destroy]
+  
+  def user_match_cite
+    usuario_actual = current_user.id
+    cita_actual = Cite.find(params[:id])
+    unless cita_actual.user.id == usuario_actual
+      redirect_to root_path
+    end
+  end
+  
   def index
-    @cites = Cite.all
+    @cites = Cite.find :all, :conditions => { :user_id => current_user.id}
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,7 +52,8 @@ class CitesController < ApplicationController
   # POST /cites.xml
   def create
     @cite = Cite.new(params[:cite])
-
+    @cite.user = current_user
+    
     respond_to do |format|
       if @cite.save
         format.html { redirect_to(@cite, :notice => 'Cite was successfully created.') }

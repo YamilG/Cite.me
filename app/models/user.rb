@@ -6,5 +6,6 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
   
   field :user_name
+  references_many :cites, :stored_as => :array, :inverse_of => :cites
   
 end

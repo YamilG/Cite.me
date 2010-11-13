@@ -18,6 +18,8 @@
       %td= cite.year
       %td= cite.publisher
       %td= cite.page
+      -unless cite.user.nil?
+        %td= cite.user.user_name
       %td= link_to 'Show', cite
       %td= link_to 'Edit', edit_cite_path(cite)
       %td= link_to 'Destroy', cite, :confirm => 'Are you sure?', :method => :delete
